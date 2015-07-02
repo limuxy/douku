@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="toolbar">
+    <div class="barheader">工具栏</div>
+    <a href="/load_collect">刷新已看过的电影</a> <br>
+    <a href="/load_wish">刷新想看的电影</a>
+</div>
+<div class="collect">
+    <div class="barheader">看过的电影(关键词：{{ keywords }})</div>
+    <div class="movie-list">
+        <table>
+            {% for movie in collect %}
+            <tr>
+            <td class="title">{{ movie.titles[0] }}</td>
+            <td><a href="http://movie.douban.com/subject/{{ movie.movie_id }}/" target="_blank">{{ movie.movie_id }}</a></td>
+            <td>{% if movie.my_rating%}{{ movie.my_rating }}{% else %}未评{% endif %}星</td>
+            <td>{{ movie.date_added }}</td>
+            <td><a href="http://c53.yunpan.360.cn/my/index/#search|{{ movie.titles[0]}}" target="_blank">搜索360云盘</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="wish">
+    <div class="barheader">想看的电影(关键词：{{ keywords }})</div>
+    <div class="movie-list">
+        <table>
+            {% for movie in wish %}
+            <tr>
+            <td class="title">{{ movie.titles[0] }}</td>
+            <td><a href="http://movie.douban.com/subject/{{ movie.movie_id }}/" target="_blank">{{ movie.movie_id }}</a></td>
+            <td>{% if movie.my_rating%}{{ movie.my_rating }}{% else %}未评{% endif %}星</td>
+            <td>{{ movie.date_added }}</td>
+            <td><a href="http://c53.yunpan.360.cn/my/index/#search|{{ movie.titles[0]}}" target="_blank">搜索360云盘</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} - 豆库</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+    <header> <a href="/">首页</a> | 
+        <form class="inline" action="{{ url_for('search') }}" method="post">
+            <input type="text" name="keywords" placeholder="关键词（以空格隔开）">
+            排序：<select name="order" id="order">
+                <option value="date_added">时间</option>
+                <option value="my_rating">评分</option>
+            </select>
+            <input type="submit" value="搜索">
+        </form>
+    </header>
+    <hr>
+    {% block body %}{% endblock %}
+</body>
+</html>
