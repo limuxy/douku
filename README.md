@@ -8,11 +8,16 @@ Douku is a personal movie library, basing on Douban Movie. You can import movie 
 ###安装 Installation
 请先安装mongodb！ Please install mongodb which is used as database!
 >git clone
+
 >virtualenv venv
->activate virtualenv(different cmd depending on os)
->pip install -re requirements.txt
+
+>activate virtualenv (different cmd depending on os)
+
+>pip install -r requirements.txt
+
 >python run.py
 
 ###使用 Usage
 使用右侧工具栏：刷新看过的电影、刷新想看的电影。刷新数量很大时，shell会显示正在加载的页数。
+
 使用搜索：关键词请以单个空格分割，搜索结果会显示符合所有关键词的结果。
