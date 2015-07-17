@@ -20,7 +20,9 @@ Douku is a personal movie library, basing on Douban Movie. You can import movie 
 ###配置 Config
 修改config.py，填入自己的豆瓣ID，以及COOKIE（用chrome访问豆瓣，按F12选Network，刷新后点左侧链接查看右侧Headers里的Cookie，直接复制出来即可。
 
-###使用 Usage
-使用右侧工具栏：刷新看过的电影、刷新想看的电影。刷新数量很大时，shell会显示正在加载的页数。
+###更新
+####2015-07-17
+修改了数据库结构，更新了界面
 
-使用搜索：关键词请以单个空格分割，搜索结果会显示符合所有关键词的结果。
+###TODO
+添加豆列功能

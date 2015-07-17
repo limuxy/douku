@@ -1,22 +1,73 @@
+
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
     <title>{{ title }} - 豆库</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-</head>
-<body>
-    <header> <a href="/">首页</a> | 
-        <form class="inline" action="{{ url_for('search') }}" method="post">
-            <input type="text" name="keywords" placeholder="关键词（以空格隔开）">
-            排序：<select name="order" id="order">
-                <option value="date_added">时间</option>
-                <option value="my_rating">评分</option>
-            </select>
-            <input type="submit" value="搜索">
-        </form>
-    </header>
-    <hr>
-    {% block body %}{% endblock %}
-</body>
+
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='img/index-0.png') }}" alt="豆库"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li{% if index_active %} class="active"{% endif %}><a href="{{ url_for('index') }}">首页</a></li>
+                <li{% if collect_active %} class="active"{% endif %}><a href="{{ url_for('collect') }}">我看过的</a></li>
+                <li{% if wish_active %} class="active"{% endif %}><a href="{{ url_for('wish') }}">我想看的</a></li>
+                <li{% if dlist_active %} class="active"{% endif %}><a href="#dlist">我的豆列</a></li>
+                <li{% if search_active %} class="active"{% endif %}><a href="{{ url_for('search') }}">搜索</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    {% block body%} {% endblock %}
+    
+      <!-- FOOTER -->
+      <footer></footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
 </html>

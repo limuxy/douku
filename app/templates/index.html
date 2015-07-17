@@ -1,40 +1,76 @@
 {% extends 'base.html' %}
 {% block body %}
-<div class="toolbar">
-    <div class="barheader">工具栏</div>
-    <a href="/load_collect">刷新已看过的电影</a> <br>
-    <a href="/load_wish">刷新想看的电影</a>
-</div>
-<div class="collect">
-    <div class="barheader">看过的电影(关键词：{{ keywords }})</div>
-    <div class="movie-list">
-        <table>
-            {% for movie in collect %}
-            <tr>
-            <td class="title">{{ movie.titles[0] }}</td>
-            <td><a href="http://movie.douban.com/subject/{{ movie.movie_id }}/" target="_blank">{{ movie.movie_id }}</a></td>
-            <td>{% if movie.my_rating%}{{ movie.my_rating }}{% else %}未评{% endif %}星</td>
-            <td>{{ movie.date_added }}</td>
-            <td><a href="http://c53.yunpan.360.cn/my/index/#search|{{ movie.titles[0]}}" target="_blank">搜索360云盘</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-</div>
-<div class="wish">
-    <div class="barheader">想看的电影(关键词：{{ keywords }})</div>
-    <div class="movie-list">
-        <table>
-            {% for movie in wish %}
-            <tr>
-            <td class="title">{{ movie.titles[0] }}</td>
-            <td><a href="http://movie.douban.com/subject/{{ movie.movie_id }}/" target="_blank">{{ movie.movie_id }}</a></td>
-            <td>{% if movie.my_rating%}{{ movie.my_rating }}{% else %}未评{% endif %}星</td>
-            <td>{{ movie.date_added }}</td>
-            <td><a href="http://c53.yunpan.360.cn/my/index/#search|{{ movie.titles[0]}}" target="_blank">搜索360云盘</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-</div>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="{{ url_for('static', filename='img/carousel.gif') }}" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>定义自己的电影库</h1>
+              <p>根据看过的电影、想看的电影及豆列管理自己的电影库</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="{{ url_for('static', filename='img/carousel.gif') }}" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>整合自己的云存储</h1>
+              <p>方便的管理云盘中的电影文件，快速搜索与到达</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="{{ url_for('static', filename='img/carousel.gif') }}" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>更多功能</h1>
+              <p>敬请期待</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">上一个</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">下一个</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ url_for('static', filename='img/index-1.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>我看过的</h2>
+          <p><a class="btn btn-default" href="{{ url_for('collect') }}" role="button">进入 &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ url_for('static', filename='img/index-2.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>我想看的</h2>
+          <p><a class="btn btn-default" href="{{ url_for('wish') }}" role="button">进入 &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ url_for('static', filename='img/index-3.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>我的豆列</h2>
+          <p><a class="btn btn-default" href="#dlist" role="button">进入 &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
 {% endblock %}

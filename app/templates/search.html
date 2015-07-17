@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container search">
+    <div class="row">
+        <div class="col-lg-2">
+            <form action="{{ url_for('search') }}">
+                <div class="form-group">
+                    <label for="keywords">关键词</label>
+                    <input type="text" class="form-control" name="keywords" placeholder="输入关键词，以空格隔开" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="cat">范围</label>
+                    <select name="cat" id="cat" class="form-control">
+                        <option value="all">全部</option>
+                        <option value="collect">我看过的</option>
+                        <option value="wish">我想看的</option>
+                        <option value="dlist">我的豆列</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="order">排序</label>
+                    <select name="order" id="order" class="form-control">
+                        <option value="date_added">添加时间</option>
+                        <option value="my_rating">评分</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+        <div class="col-lg-6">
+            {% if keywords %}
+            <div class="alert alert-info" role="alert">
+                正在搜索：<b>{{ keywords }}</b> 
+                / 范围：<b>{% if cat == 'all' %}全部{% elif cat == 'collect' %}我看过的{% elif cat == 'wish' %}我想看的{% elif cat == 'dlist' %}我的豆列{% endif %}</b>
+            </div>
+            {% endif %}
+            {% if movies %}
+            <table class="table table-condensed">
+                <tr>
+                    <th>电影名</th>
+                    <th>添加时间</th>
+                    <th>我的打分</th>
+                </tr>
+                {% for movie in movies %}
+                <tr class="movie-item" data-movie-id="{{ movie.movie_id }}">
+                    <td>{{ movie.titles[0] }}</td>
+                    <td>{{ movie.date_added }}</td>
+                    <td>{% if movie.my_rating %}{{ movie.my_rating }}颗星{% else %}-----{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}{% if keywords %}没有找到结果{% endif %}{% endif%}
+        </div>
+        <div class="col-lg-4">
+            {% if movies %}{% for movie in movies %}
+            <div class="movie panel panel-info" id="{{ movie.movie_id }}">
+                <div class="panel-heading">
+                    {{ movie.titles[0] }}&nbsp;&nbsp;
+                    <a href="http://movie.douban.com/subject/{{ movie.movie_id }}/" target="_blank" data-toggle="tooltip" data-placement="top" title="打开豆瓣页面">
+                        <img src="{{ url_for('static', filename='img/douban_icon.png') }}" alt="豆瓣">
+                    </a>
+                    <a href="http://c53.yunpan.360.cn/my/index/#search|{{ movie.titles[0] }}" target="_blank" data-toggle="tooltip" data-placement="top" title="搜索360云盘">
+                        <img src="{{ url_for('static', filename='img/360_icon.png') }}" alt="360">
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <b>上映时间:</b><br>
+                    {% for x in movie.date_online %}{{ x.date }} {{ x.location }}<br>{% endfor %}
+                    <hr>
+                    <b>别名:</b><br>
+                    {% for title in movie.titles %}{{ title }}<br>{% endfor %}
+                    <hr>
+                    标签: {% for tag in movie.tags %} <a href="{{ url_for('search', keywords=tag) }}">{{ tag }}</a> / {% endfor %}
+                </div>
+            </div>
+            {% endfor %}{% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
