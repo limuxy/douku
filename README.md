@@ -21,8 +21,13 @@ Douku is a personal movie library, basing on Douban Movie. You can import movie 
 修改config.py，填入自己的豆瓣ID，以及COOKIE（用chrome访问豆瓣，按F12选Network，刷新后点左侧链接查看右侧Headers里的Cookie，直接复制出来即可。
 
 ###更新
-####2015-07-17
+#####2015-07-17
 修改了数据库结构，更新了界面
 
 ###TODO
 添加豆列功能
+
+###截图
+![豆库1](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h54m41s_004_.png)
+![豆库2](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m16s_005_.png)
+![豆库3](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m54s_006_.png)
