@@ -2,7 +2,7 @@
 from flask import Flask
 from pymongo import MongoClient
 
-app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__)
 app.config.from_object('config')
 app.config.from_pyfile('config.py')
 
