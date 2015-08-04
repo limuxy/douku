@@ -28,6 +28,6 @@ Douku is a personal movie library, basing on Douban Movie. You can import movie 
 添加豆列功能
 
 ###截图
-![豆库1](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h54m41s_004_.png)
-![豆库2](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m16s_005_.png)
-![豆库3](http://limuxy.qiniudn.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m54s_006_.png)
+![豆库1](http://limuxy.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h54m41s_004_.png)
+![豆库2](http://limuxy.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m16s_005_.png)
+![豆库3](http://limuxy.com/wp-content/uploads/2015/07/Ashampoo_Snap_2015.07.17_15h59m54s_006_.png)
